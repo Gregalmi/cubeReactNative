@@ -85,11 +85,11 @@ const login = ({navigation, route}) => {
                     />
                 </View>
                 
-                    <TouchableOpacity onPress={()=>{handlePress}} style={styles.loginBtn}>
+                    <TouchableOpacity onPress={handlePress} style={styles.loginBtn}>
                         <Text style={styles.loginText}>Se Connecter</Text>
                     </TouchableOpacity>
-                {/*}
-                    <TouchableOpacity onPress={()=>{handlePress}} style={styles.loginBtn}>
+                
+                    {/*<TouchableOpacity onPress={()=>{handlePress}} style={styles.loginBtn}>
                         <Text style={styles.loginText}>Se Déconnecter</Text>
     </TouchableOpacity>*/}
             </View>

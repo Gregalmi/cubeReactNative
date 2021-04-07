@@ -60,7 +60,7 @@ const myRessources = ({navigation, route, token}) => {
   }
 
     return (
-        <View style={styles.view}>
+        <View style={styles.container}>
         {/* {console.log('RENDER', films)} */}
             <Text>
                 Mes ressources
@@ -83,7 +83,9 @@ const myRessources = ({navigation, route, token}) => {
            
 
                 <View style={styles.espace}>
-                    <Button onPress={logout} title={'logout'}/>
+                    <TouchableOpacity onPress={logout} style={styles.loginBtn}>
+                        <Text style={styles.loginText}>Se Déconnecter</Text>
+                    </TouchableOpacity>
                 </View>
         </View>
 
@@ -93,8 +95,12 @@ const myRessources = ({navigation, route, token}) => {
 export default myRessources
 
 const styles = StyleSheet.create({
-    view: {
-        marginTop: 50
+    container: {
+        marginTop: 50,
+        flex: 1,
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     espace: {
         margin: 10,
@@ -135,4 +141,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgray',
         marginBottom: 5,
     },
+    loginBtn: {
+        width: "100%",
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        backgroundColor: "#FFA831",
+      },
 })
