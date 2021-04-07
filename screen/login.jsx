@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button,ImageBackground, TextInput,TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native'
 import {loginAuth, KEY_TOKEN, logoutAuth} from '../services/authService'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const login = ({navigation, route}) => {
     const [email, setEmail] = useState('')
@@ -52,53 +53,99 @@ const login = ({navigation, route}) => {
     }
 
     return (
-        <View style={styles.view}>
-            {console.log('RENDER', email, pwd, token)}
-            {/* {displayToken()} */}
-            <Text style={styles.espace}>Connexion</Text>
-            <TextInput 
-                onChangeText={setEmail}
-                value={email}
-                placeholder="Email"
-                keyboardType='email-address'
-                textContentType= 'emailAddress'
-                style={[styles.espace, styles.box]}
-                onSubmitEditing={handlePress}
-            />
-            <TextInput 
-                onChangeText={setPwd}
-                value={pwd}
-                placeholder="Password"
-                secureTextEntry={true}
-                textContentType= 'password'
-                style={[styles.espace, styles.box]}
-                onSubmitEditing={handlePress}
-            />
-            <Button onPress={handlePress} title={'Connexion'}/>
-            <View style={styles.espace}>
-                <Button onPress={logout} title={'logout'}/>
+        <ImageBackground  style={{width: '100%', height: '100%'}} source = {require("../assets/background-vertical.png")}>
+                    {console.log('RENDER', email, pwd, token)}
+                {/* {displayToken()} */}
+            <View style={styles.container}>
+                
+                <Text style={styles.titre}>Bienvenue</Text>
+                
+                <View style={styles.inputView}>
+                    <TextInput 
+                        onChangeText={setEmail}
+                        value={email}
+                        placeholder="Email"
+                        placeholderTextColor="#003f5c"
+                        keyboardType='email-address'
+                        textContentType= 'emailAddress'
+                        style={styles.TextInput}
+                        onSubmitEditing={handlePress}
+                    />
+                </View>
+                <View style={styles.inputView}>
+                    <TextInput 
+                        onChangeText={setPwd}
+                        value={pwd}
+                        placeholder="Password"
+                        placeholderTextColor="#003f5c"
+                        secureTextEntry={true}
+                        textContentType= 'password'
+                        style={styles.TextInput}
+                        onSubmitEditing={handlePress}
+                    />
+                </View>
+                
+                    <TouchableOpacity onPress={()=>{handlePress}} style={styles.loginBtn}>
+                        <Text style={styles.loginText}>Se Connecter</Text>
+                    </TouchableOpacity>
+                {/*}
+                    <TouchableOpacity onPress={()=>{handlePress}} style={styles.loginBtn}>
+                        <Text style={styles.loginText}>Se Déconnecter</Text>
+    </TouchableOpacity>*/}
             </View>
-        </View>
+        </ImageBackground>
+        
     )
 }
 
 export default login
 
 const styles = StyleSheet.create({
-    view: {
+    container: {
         flex: 1,
+        backgroundColor: 'transparent',
         alignItems: 'center',
-        justifyContent: 'center'
-    },
-    espace: {
-        margin: 10,
-    },
-    box: {
-        borderColor: 'black',
-        borderWidth: 1,
-        width: 200,
-        height: 40,
+        justifyContent: 'center',
+      },
+      image: {
+        flex: 1
+      },
+      inputView: {
+        backgroundColor: "#FF9F1C",
+        borderRadius: 30,
+        width: "70%",
+        height: 45,
+        marginBottom: 20,
+        alignItems: "center",
+        opacity: 0.8
+      },
+      titre:{
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 20,
+        color: '#fff'
+      },
+     
+      TextInput: {
+        height: 50,
+        flex: 1,
         padding: 10,
-    }
+        marginLeft: 20,
+      },
+     
+      forgot_button: {
+        height: 30,
+        marginBottom: 30,
+      },
+     
+      loginBtn: {
+        width: "80%",
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        backgroundColor: "#FFA831",
+      },
 
 })
