@@ -27,17 +27,14 @@ const ResourcesCard = ({navigation,  resource }) => {
 
     return (
         <TouchableOpacity onPress={onPress}>
-            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: 10 }}>
+            <View style={{ flex: 1, borderRadius: 10, flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: 10, backgroundColor: 'white'}}>
 
                 <View style={styles.topLeft}>
 
                     {resource.type &&
-                        <View >
-                            {resource.type.createdAt &&
-                                <Text >{resource.type.createdAt}</Text>
-                            }
+                        <View >                           
                             {resource.type.label &&
-                                <Text >{resource.type.label}</Text>
+                                <Text style={styles.firsttext}>{resource.type.label}</Text>
                             }
                         </View>
                     }
@@ -45,7 +42,7 @@ const ResourcesCard = ({navigation,  resource }) => {
                     {resource.category &&
                         <View style={styles.categoryLabel}>
                             {resource.category.label &&
-                                <Text >{resource.category.label}</Text>
+                                <Text style={styles.categoryText} >{resource.category.label}</Text>
                             }
                         </View>
                     }
@@ -57,55 +54,28 @@ const ResourcesCard = ({navigation,  resource }) => {
                             {/* <Button> */}
 
 
-                            <View style={styles.authorName}>
-
-                                <Text >{resource.author.firstname} </Text>
+                            <View>
+                                <Text style={styles.authorName}>{resource.author.firstname} </Text>
                             </View>
                             {/* </Button> */}
 
                         </>
-                    }
-
-                    
+                    }                    
                 </View>
 
                 <View>
                     <Image source={{ uri: resource.imageUrl }} style={{ width: 250, height: 100 }} />
                 </View>
 
-
-
                 <View style={styles.titleArticle}>
-                    <Text >{resource.title} </Text>
+                    <Text style={styles.titreArticle}>{resource.title} </Text>
                 </View>
 
-                {resource.type &&
-                    <View >
-                        {resource.type.createdAt &&
-                            <Text >{resource.type.createdAt}</Text>
-                        }
-                        {resource.type.label &&
-                            <Text style={styles.label}>{resource.type.label}</Text>
-                        }
-                    </View>
-                }
+                
 
-                {resource.category &&
-                    <View style={styles.categoryLabel}>
-                        {resource.category.label &&
-                            <Text >{resource.category.label}</Text>
-                        }
-                    </View>
-                }
-
-
-
-
+                
             </View>
-
-
             <View style={styles.lineStyle} />
-
         </TouchableOpacity>
     )
 }
@@ -132,13 +102,23 @@ const styles = StyleSheet.create({
         top: 10,
         left: 0,
     },
+    categoryText: {
 
-    authorName: {
-        fontSize: 'smaller'
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontStyle: 'italic'   
     },
 
-    titleArticle: {
-        fontSize: 'smaller'
+    authorName: {
+        color: '#FFA831',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    titreArticle: {
+        fontSize: 16,
+        textAlign: 'center',
+        color: 'black',
     },
 
     lineStyle: {
@@ -147,9 +127,18 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     to: {
-        backgroundColor: 'lightgray',
+        backgroundColor: '#FFF',
         marginBottom: 5,
     },
+    firsttext: {
+        fontSize: 32,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'black',
+        textShadowOffset: {width: 2, height: 2},
+        textShadowRadius: 10,
+        textShadowColor: '#FFA831',
+    }
 
 });
 

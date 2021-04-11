@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, FlatList, StyleSheet, Text, View,Image, TouchableOpacity,ScrollView } from 'react-native'
+import { Button, FlatList, StyleSheet, Text, View,Image, TouchableOpacity,ScrollView, ImageBackground } from 'react-native'
 import { KEY_TOKEN, logoutAuth } from '../services/authService'
 import ResourcesCard from '../component/ResourcesCard'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -60,21 +60,21 @@ const myRessources = ({navigation, route, token}) => {
   }
 
     return (
+        <ImageBackground  style={{width: '100%', height: '100%'}} source = {require("../assets/background-vertical.png")}>
         <View style={styles.container}>
         {/* {console.log('RENDER', films)} */}
-            <Text>
-                Mes ressources
+            <Text style={styles.titre}>
+                Ressources
             </Text>
 
             <ScrollView>
 
                 {resources.length === 0
-                ? <Text > Aucune resources disponibles </Text>
+                ? <Text > Aucune ressource disponible </Text>
                 : <FlatList
                     data={resources}
                     keyExtractor={item => item.nom}
                     renderItem={({ item }) => <ResourcesCard resource={item} navigation={navigation}
-
                     />}
                 />
                 }
@@ -88,6 +88,7 @@ const myRessources = ({navigation, route, token}) => {
                     </TouchableOpacity>
                 </View>
         </View>
+        </ImageBackground>
 
     )
 }
@@ -96,9 +97,8 @@ export default myRessources
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 50,
         flex: 1,
-        backgroundColor: 'transparent',
+        //backgroundColor: '#1C3041',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -149,5 +149,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 40,
         backgroundColor: "#FFA831",
+      },
+    titre:{
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 20,
+        color: '#FFF',
+        marginTop: 20
       },
 })

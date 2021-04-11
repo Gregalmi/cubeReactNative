@@ -27,6 +27,7 @@ const ResourceDetail = ({  navigation, route }) => {
 
 
     return (
+        <ImageBackground  style={{width: '100%', height: '100%'}} source = {require("../assets/background-vertical.png")}>
         <View style={styles.main}>
 
             <View style={styles.topLeft}>
@@ -83,18 +84,19 @@ const ResourceDetail = ({  navigation, route }) => {
 
 
         </View>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    main: { flex: 1, flexDirection: 'column', alignItems: 'center', textAlign: 'center' },
-    contents: {
-
-    },
+    main: { flex: 1, margin: 40, borderRadius: 10, flexDirection: 'column', alignItems: 'center', textAlign: 'center' , color: '#FFF', backgroundColor: '#FFF'},
+    
     attributeLabel: {
         fontSize: 11,
         fontWeight: 'bold',
-        textAlign: 'left'
+        textAlign: 'left',
+
+       
 
     },
 
@@ -107,7 +109,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 10,
         left: 15,
-        textAlign: 'left'
+        textAlign: 'left',
+
     },
     favoriteButton: {
         position: "absolute",
@@ -119,28 +122,37 @@ const styles = StyleSheet.create({
     categoryLabel: {
         top: 10,
         left: 0,
-        textAlign: 'left'
+        textAlign: 'left',
+
     },
     
     titleArticle: {
         fontSize: 'larger',
         marginTop: 13,
+
     },
 
     contentDivider: {
         borderWidth: 0.1,
         borderColor: 'black',
         margin: 1,
+
+        color: '#FFF',
     },
-    txt: { fontSize: 30, marginTop: 20 },
-    txt_md: { fontSize: 20, marginTop: 5 },
+    txt: { fontSize: 30, marginTop: 20 ,
+        color: '#FFF'},
+    txt_md: { fontSize: 20, marginTop: 5 , 
+        color: '#FFF'},
     img: { width: 150, height: 150, marginTop: 20 },
     pan: { borderWidth: 1, borderRadius: 30, borderColor: 'gray', padding: 10, marginTop: 5, marginBottom: 5, flex: 0 },
     btn: {
-        borderWidth: 1, borderRadius: 20,
-        borderColor: 'gray',
-        padding: 10, marginTop: 15, marginBottom: 5,
-        flex: 0
+        width: "120%",
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        backgroundColor: "#FFA831",
     },
 })
 
